@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Keyani Restaurant | GT Road Wah Cantt</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --gold: #d9a441;
+            --gold-light: #f0c56a;
+            --dark: #090909;
+            --dark2: #111111;
+            --white: #ffffff;
+            --gray: #b8b8b8;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 7%;
+            transition: .4s;
+        }
+
+        header.scrolled {
+            background: rgba(5,5,5,.95);
+            backdrop-filter: blur(15px);
+            padding: 12px 7%;
+            box-shadow: 0 5px 25px rgba(0,0,0,.5);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            line-height: .8;
+        }
+
+        .logo span {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            font-size: 9px;
+            letter-spacing: 5px;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: .3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            bottom: -7px;
+            left: 0;
+            transition: .3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .call-btn {
+            background: var(--gold);
+            color: #111;
+            padding: 12px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .call-btn:hover {
+            transform: translateY(-3px);
+            background: var(--gold-light);
+            box-shadow: 0 10px 25px rgba(217,164,65,.3);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 120px 7% 60px;
+            overflow: hidden;
+
+            background:
+            linear-gradient(90deg,
+            rgba(0,0,0,.9) 0%,
+            rgba(0,0,0,.65) 45%,
+            rgba(0,0,0,.25) 100%),
+            url("https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1800&q=90");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: var(--gold);
+            filter: blur(180px);
+            opacity: .08;
+            right: -100px;
+            top: 100px;
+            animation: glow 5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.3);
+            }
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+            animation: heroIn 1.2s ease forwards;
+        }
+
+        @keyframes heroIn {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .small-title {
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-style: italic;
+            margin-bottom: -5px;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(65px, 9vw, 120px);
+            line-height: .8;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0 20px;
+            font-size: 15px;
+            letter-spacing: 2px;
+        }
+
+        .location::before,
+        .location::after {
+            content: "";
+            width: 70px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .hero p {
+            color: #ddd;
+            max-width: 540px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .features {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .feature {
+            padding: 14px 18px;
+            background: rgba(255,255,255,.08);
+            border: 1px solid rgba(255,255,255,.15);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            font-size: 12px;
+        }
+
+        .feature i {
+            color: var(--gold);
+            margin-right: 6px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 14px 27px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: .3s;
+            display: inline-block;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: #111;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(217,164,65,.35);
+        }
+
+        .btn-outline {
+            border: 1px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #111;
+        }
+
+        /* ================= SECTION ================= */
+
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title small {
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-style: italic;
+        }
+
+        .section-title h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 55px;
+            margin-top: -5px;
+        }
+
+        .line {
+            width: 70px;
+            height: 2px;
+            background: var(--gold);
+            margin: 15px auto;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            background: #0d0d0d;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-images {
+            position: relative;
+            min-height: 500px;
+        }
+
+        .about-img {
+            width: 75%;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.6);
+        }
+
+        .about-img2 {
+            position: absolute;
+            width: 45%;
+            height: 230px;
+            object-fit: cover;
+            right: 0;
+            bottom: 0;
+            border: 8px solid #0d0d0d;
+            border-radius: 8px;
+        }
+
+        .about-text small {
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .about-text h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 55px;
+            margin: 10px 0 20px;
+        }
+
+        .about-text h2 span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .about-text p {
+            color: #aaa;
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        /* ================= CARDS ================= */
+
+        .menu-section {
+            background: #080808;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .food-card {
+            position: relative;
+            height: 390px;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,.1);
+        }
+
+        .food-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .6s;
+        }
+
+        .food-card:hover img {
+            transform: scale(1.12);
+        }
+
+        .food-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent 35%, rgba(0,0,0,.95));
+        }
+
+        .food-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 25px;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .food-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+        }
+
+        .food-info p {
+            color: #bbb;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .food-arrow {
+            position: absolute;
+            right: 20px;
+            bottom: 25px;
+            width: 35px;
+            height: 35px;
+            background: var(--gold);
+            color: #111;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            z-index: 3;
+        }
+
+        /* ================= STATS ================= */
+
+        .stats {
+            background: #f5f0e6;
+            color: #111;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            padding: 45px 7%;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat {
+            border-right: 1px solid #d2c7ae;
+        }
+
+        .stat:last-child {
+            border: none;
+        }
+
+        .stat i {
+            color: var(--gold);
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .stat h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 45px;
+        }
+
+        .stat p {
+            font-size: 12px;
+            color: #777;
+        }
+
+        /* ================= VISIT ================= */
+
+        .visit {
+            background:
+            linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.9)),
+            url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1800&q=90");
+
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        .visit h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 65px;
+        }
+
+        .visit h2 span {
+            color: var(--gold);
+        }
+
+        .visit p {
+            color: #bbb;
+            margin: 15px auto 30px;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .hours {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 25px;
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .hours i {
+            color: var(--gold);
+            font-size: 25px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #050505;
+            padding: 50px 7% 25px;
+            text-align: center;
+        }
+
+        footer .logo {
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        footer p {
+            color: #777;
+            font-size: 13px;
+        }
+
+        .socials {
+            margin: 25px 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .socials a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #333;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: white;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .socials a:hover {
+            background: var(--gold);
+            color: #111;
+            transform: translateY(-4px);
+        }
+
+        /* ================= SCROLL ANIMATION ================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width: 1000px) {
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .food-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-images {
+                min-height: 450px;
+            }
+
+        }
+
+        @media(max-width: 750px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background: #090909;
+                flex-direction: column;
+                align-items: center;
+                padding: 25px;
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            header .call-btn {
+                display: none;
+            }
+
+            .hero {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .hero h1 {
+                font-size: 65px;
+            }
+
+            .features {
+                flex-direction: column;
+                max-width: 300px;
+            }
+
+            .food-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .stat:nth-child(2) {
+                border: none;
+            }
+
+            .visit h2 {
+                font-size: 48px;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header id="header">
+
+    <nav class="navbar">
+
+        <a href="#" class="logo">
+            Keyani
+            <span>RESTAURANT GT ROAD</span>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+
+        </ul>
+
+        <a href="tel:03022264444" class="call-btn">
+            <i class="fa-solid fa-phone"></i>
+            0302 2264444
+        </a>
+
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            Welcome to
+        </div>
+
+        <h1>
+            KEYANI
+            <span>RESTAURANT</span>
+        </h1>
+
+        <div class="location">
+            GT ROAD, WAH CANTT
+        </div>
+
+        <p>
+            Experience the rich taste of traditional Pakistani cuisine,
+            prepared with authentic spices, fresh ingredients and a whole
+            lot of love. A perfect place for families and food lovers.
+        </p>
+
+        <div class="features">
+
+            <div class="feature">
+                <i class="fa-solid fa-utensils"></i>
+                Dine-in
+            </div>
+
+            <div class="feature">
+                <i class="fa-solid fa-car"></i>
+                Drive-through
+            </div>
+
+            <div class="feature">
+                <i class="fa-solid fa-motorcycle"></i>
+                Delivery
+            </div>
+
+        </div>
+
+        <div class="hero-buttons">
+
+            <a href="#menu" class="btn btn-gold">
+                <i class="fa-solid fa-utensils"></i>
+                View Our Menu
+            </a>
+
+            <a href="#about" class="btn btn-outline">
+                <i class="fa-solid fa-arrow-down"></i>
+                Discover More
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about reveal" id="about">
+
+    <div class="about-container">
+
+        <div class="about-images">
+
+            <img
+            class="about-img"
+            src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=1000&q=85"
+            alt="Pakistani Food">
+
+            <img
+            class="about-img2"
+            src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=85"
+            alt="Restaurant Food">
+
+        </div>
+
+        <div class="about-text">
+
+            <small>TRADITION • TASTE • QUALITY</small>
+
+            <h2>
+                Serving Quality
+                With <span>Passion</span>
+            </h2>
+
+            <p>
+                Welcome to Keyani Restaurant GT Road, Wah Cantt.
+                We bring you delicious traditional Pakistani food
+                prepared with carefully selected ingredients and
+                authentic flavors.
+            </p>
+
+            <p>
+                Whether you are enjoying a family dinner, meeting
+                friends or simply craving a delicious karahi,
+                Keyani Restaurant is ready to serve you.
+            </p>
+
+            <a href="#menu" class="btn btn-gold">
+                Explore Our Food
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MENU ================= -->
+
+<section class="menu-section reveal" id="menu">
+
+    <div class="section-title">
+
+        <small>Must Try</small>
+
+        <h2>Our Signature Dishes</h2>
+
+        <div class="line"></div>
+
+    </div>
+
+
+    <div class="food-grid">
+
+        <div class="food-card">
+
+            <img
+            src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=85"
+            alt="Karahi">
+
+            <div class="food-info">
+
+                <h3>Beef Tikka Karahi</h3>
+
+                <p>
+                    Rich, spicy & delicious
+                </p>
+
+            </div>
+
+            <div class="food-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+
+        </div>
+
+
+        <div class="food-card">
+
+            <img
+            src="https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=800&q=85"
+            alt="Nihari">
+
+            <div class="food-info">
+
+                <h3>Nihari</h3>
+
+                <p>
+                    Traditional Pakistani taste
+                </p>
+
+            </div>
+
+            <div class="food-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+
+        </div>
+
+
+        <div class="food-card">
+
+            <img
+            src="https://images.unsplash.com/photo-1529563021893-cc83c992d75d?auto=format&fit=crop&w=800&q=85"
+            alt="Seekh Kabab">
+
+            <div class="food-info">
+
+                <h3>Seekh Kabab</h3>
+
+                <p>
+                    Grilled to perfection
+                </p>
+
+            </div>
+
+            <div class="food-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+
+        </div>
+
+
+        <div class="food-card">
+
+            <img
+            src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=85"
+            alt="Qeema">
+
+            <div class="food-info">
+
+                <h3>Qeema</h3>
+
+                <p>
+                    Full of authentic flavour
+                </p>
+
+            </div>
+
+            <div class="food-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<div class="stats reveal" id="reviews">
+
+    <div class="stat">
+
+        <i class="fa-solid fa-face-smile"></i>
+
+        <h3>959+</h3>
+
+        <p>Customer Reviews</p>
+
+    </div>
+
+    <div class="stat">
+
+        <i class="fa-solid fa-star"></i>
+
+        <h3>3.9</h3>
+
+        <p>Google Rating</p>
+
+    </div>
+
+    <div class="stat">
+
+        <i class="fa-solid fa-bowl-food"></i>
+
+        <h3>50+</h3>
+
+        <p>Delicious Dishes</p>
+
+    </div>
+
+    <div class="stat">
+
+        <i class="fa-solid fa-award"></i>
+
+        <h3>10+</h3>
+
+        <p>Years of Excellence</p>
+
+    </div>
+
+</div>
+
+
+<!-- ================= VISIT ================= -->
+
+<section class="visit reveal" id="contact">
+
+    <div class="small-title">
+        Great Food, Great Mood
+    </div>
+
+    <h2>
+        Visit Us <span>Today!</span>
+    </h2>
+
+    <p>
+        Come and enjoy delicious traditional Pakistani food
+        with your family and friends at Keyani Restaurant,
+        GT Road Wah Cantt.
+    </p>
+
+    <div class="hours">
+
+        <i class="fa-regular fa-clock"></i>
+
+        <div>
+            <strong>We're Open</strong>
+            <br>
+            <small>11:30 AM — 11:30 PM</small>
+        </div>
+
+    </div>
+
+    <br>
+
+    <a
+    href="https://www.google.com/maps/search/?api=1&query=Keyani+Restaurant+GT+Road+Wah+Cantt"
+    target="_blank"
+    class="btn btn-gold">
+
+        <i class="fa-solid fa-location-dot"></i>
+        Get Directions
+
+    </a>
+
+    <a
+    href="tel:03022264444"
+    class="btn btn-outline">
+
+        <i class="fa-solid fa-phone"></i>
+        Call Now
+
+    </a>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <a href="#" class="logo">
+
+        Keyani
+
+        <span>RESTAURANT GT ROAD</span>
+
+    </a>
+
+    <p>
+        Authentic Pakistani Cuisine • Wah Cantt
+    </p>
+
+    <div class="socials">
+
+        <a href="#">
+            <i class="fa-brands fa-facebook-f"></i>
+        </a>
+
+        <a href="#">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="#">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+    </div>
+
+    <p>
+        © 2026 Keyani Restaurant. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    /* NAVBAR SCROLL EFFECT */
+
+    const header = document.getElementById("header");
+
+    window.addEventListener("scroll", () => {
+
+        if (window.scrollY > 80) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+
+    });
+
+
+    /* MOBILE MENU */
+
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+
+        navLinks.classList.toggle("active");
+
+    });
+
+
+    /* CLOSE MOBILE MENU */
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            navLinks.classList.remove("active");
+
+        });
+
+    });
+
+
+    /* SCROLL REVEAL ANIMATION */
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    function revealOnScroll() {
+
+        reveals.forEach(element => {
+
+            const windowHeight = window.innerHeight;
+
+            const elementTop =
+                element.getBoundingClientRect().top;
+
+            if (elementTop < windowHeight - 100) {
+
+                element.classList.add("active");
+
+            }
+
+        });
+
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+
+    revealOnScroll();
+
+
+    /* FOOD CARD TILT EFFECT */
+
+    const cards = document.querySelectorAll(".food-card");
+
+    cards.forEach(card => {
+
+        card.addEventListener("mousemove", (e) => {
+
+            const rect = card.getBoundingClientRect();
+
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const rotateX =
+                ((y / rect.height) - .5) * -8;
+
+            const rotateY =
+                ((x / rect.width) - .5) * 8;
+
+            card.style.transform =
+                `perspective(800px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 scale(1.02)`;
+
+        });
+
+        card.addEventListener("mouseleave", () => {
+
+            card.style.transform =
+                "perspective(800px) rotateX(0) rotateY(0) scale(1)";
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
